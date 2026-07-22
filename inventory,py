@@ -1,5 +1,8 @@
-# This list acts as our mock database.
-# Each dictionary represents one inventory item.
+"""
+inventory.py
+
+Mock database for the Inventory Management System.
+"""
 
 inventory = [
     {
@@ -28,58 +31,38 @@ inventory = [
     }
 ]
 
-# Function to Get All Products
 
 def get_all_items():
-    """
-    Return all inventory items.
-    """
+    """Return all inventory items."""
     return inventory
 
-# find one product in the inventory by its ID
+
 def get_item_by_id(item_id):
-    """
-    Find an inventory item using its ID.
-    Returns the item if found, otherwise None.
-    """
+    """Return one inventory item by ID."""
     for item in inventory:
         if item["id"] == item_id:
             return item
-
     return None
 
-# add a new product to the inventory
+
 def add_item(item):
-    """
-    Add a new inventory item.
-    """
+    """Add a new inventory item."""
     inventory.append(item)
 
-# delete a product from the inventory
-def delete_item(item_id):
-    """
-    Delete an inventory item by ID.
-    Returns True if deleted, otherwise False.
-    """
-    item = get_item_by_id(item_id)
 
-    if item:
-        inventory.remove(item)
-        return True
-
-    return False
-
-# update a product in the inventory
 def update_item(item_id, updates):
-    """
-    Update an inventory item using a dictionary of updates.
-    Returns the updated item if found, otherwise None.
-    """
+    """Update an inventory item."""
     item = get_item_by_id(item_id)
-
     if item:
         item.update(updates)
         return item
-
     return None
 
+
+def delete_item(item_id):
+    """Delete an inventory item."""
+    item = get_item_by_id(item_id)
+    if item:
+        inventory.remove(item)
+        return True
+    return False
